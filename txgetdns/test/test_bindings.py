@@ -19,7 +19,7 @@ class BindingsTests(SynchronousTestCase):
         """
         """
         context = ffi.new("getdns_context *")
-        lib.getdns_context_create(context, 1)
+        lib.getdns_context_create(ffi.addressof(context), 1)
         d = ffi.new("getdns_dict *")
         tid = ffi.new("getdns_transaction_t *")
         r = lib.getdns_address(context, 'example.com', d, "userarg", tid, callback)
